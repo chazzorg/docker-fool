@@ -1,0 +1,22 @@
+### Apache Server ########################################
+    apache:
+      build:
+        context: ${DOCKERFILE_PATH_HOST}/apache
+        args:
+          - PHP_UPSTREAM_CONTAINER=${APACHE_PHP_UPSTREAM_CONTAINER}
+          - PHP_UPSTREAM_PORT=${APACHE_PHP_UPSTREAM_PORT}
+          - PHP_UPSTREAM_TIMEOUT=${APACHE_PHP_UPSTREAM_TIMEOUT}
+          - DOCUMENT_ROOT=${APACHE_DOCUMENT_ROOT}
+          - APACHE_INSTALL_HTTP2=${APACHE_INSTALL_HTTP2}
+      volumes:
+        - ${CODE_PATH_HOST}:${CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
+        - ${RUNTIME_PATH_HOST}${APACHE_LOG}:/var/log/apache2
+        - ${DOCKERFILE_PATH_HOST}/apache/${APACHE_SITES_PATH}:/etc/apache2/sites-available
+        - ${DOCKERFILE_PATH_HOST}/apache/${APACHE_SSL_PATH}:/etc/apache2/ssl
+      ports:
+        - "${APACHE_HOST_HTTP_PORT}:80"
+        - "${APACHE_HOST_HTTPS_PORT}:443"
+      depends_on:
+        - ${APACHE_PHP_UPSTREAM_CONTAINER}
+      networks:
+        - protected

@@ -1,0 +1,11 @@
+### Redis ################################################
+    redis:
+      build: ${DOCKERFILE_PATH_HOST}/redis
+      environment:
+        - TZ=${TZ}
+      volumes:
+        - ${RUNTIME_PATH_HOST}${REDIS_DATA}:/data
+      ports:
+        - "${REDIS_PORT}:6379"
+      networks:
+        - protected

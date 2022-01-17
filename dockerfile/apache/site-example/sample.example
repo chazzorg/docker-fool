@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+  ServerName app.site
+  DocumentRoot /var/www/app.root
+  Options Indexes FollowSymLinks
+
+  <Directory "/var/www/app.root">
+    AllowOverride All
+    <IfVersion < 2.4>
+      Allow from all
+    </IfVersion>
+    <IfVersion >= 2.4>
+      Require all granted
+    </IfVersion>
+  </Directory>
+
+  ErrorLog /var/log/apache2/app.site.error.log
+  CustomLog /var/log/apache2/app.site.access.log combined
+</VirtualHost>

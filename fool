@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source ./bin/bootstrap.sh
+
+echo '******  docker fool ******:'
+echo '1. 一键初始化环境'
+echo '2. 快速创建服务'
+echo '3. 增加单独服务'
+echo '4. 快速创建站点'
+echo '***************************'
+echo -e "请输入指令编号： \c"
+read aStart
+
+RunFool $aStart

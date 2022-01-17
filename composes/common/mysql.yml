@@ -1,0 +1,16 @@
+### MySQL ################################################
+    mysql:
+      build:
+        context: ${DOCKERFILE_PATH_HOST}/mysql
+        args:
+          - MYSQL_VERSION=${MYSQL_VERSION}
+      environment:
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        - TZ=${TZ}
+      volumes:
+        - ${RUNTIME_PATH_HOST}${MYSQL_DATA}:/var/lib/mysql
+        - ${RUNTIME_PATH_HOST}${MYSQL_LOG}:/var/log/mysql
+      ports:
+        - "${MYSQL_PORT}:3306"
+      networks:
+        - protected

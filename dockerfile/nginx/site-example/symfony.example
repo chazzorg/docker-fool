@@ -1,0 +1,48 @@
+#server {
+#    listen 80;
+#    server_name app.site;
+#    return 301 https://$server_name$request_uri;
+#}
+
+server {
+
+    listen 80;
+    listen [::]:80;
+
+    # For https
+    # listen 443 ssl;
+    # listen [::]:443 ssl;
+    # ssl_certificate /etc/nginx/ssl/default.crt;
+    # ssl_certificate_key /etc/nginx/ssl/default.key;
+
+    server_name app.site;
+    root /var/www/app.root/symfony/web;
+    index index.php index.html index.htm;
+
+    location / {
+      try_files $uri @rewriteapp;
+    }
+
+    # For Symfony 3
+    location @rewriteapp {
+        rewrite ^(.*)$ /app.php/$1 last;
+    }
+    
+    # For Symfony 4 config
+    # location @rewriteapp {
+    #     rewrite ^(.*)$ /index.php/$1 last;
+    # }
+
+    location ~ ^/(app|app_dev|config|index)\.php(/|$) {
+        fastcgi_pass php-upstream;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        #fixes timeouts
+        fastcgi_read_timeout 600;
+        fastcgi_param HTTPS off;
+    }
+
+    error_log /var/log/nginx/app.site.error.log;
+    access_log /var/log/nginx/app.site.access.log main;
+}
