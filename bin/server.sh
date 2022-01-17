@@ -12,6 +12,7 @@ function showServer(){
 # 启动服务
 function startServer(){
     if [ -f "start" ];  then
+        chmod 700 ./start
         ./start
         echo '***************************'
         echo " "

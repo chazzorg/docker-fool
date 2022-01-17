@@ -33,6 +33,7 @@ docker-fool  `傻瓜式`操作,努力简化使用docker搭建应用环境过程�
 1. 将本项目复制到任意位置，进入项目根目录，使用前请确认 docker docker-compose 命令可用
 ```bash
 cd docker-fool
+cp .env.example .env
 ```
 
 2. 运行根目录下脚本文件
