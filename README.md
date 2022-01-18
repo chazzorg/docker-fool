@@ -38,6 +38,7 @@ cp .env.example .env
 
 2. 运行根目录下脚本文件
  ```bash
+chmod 700 ./fool
 ./fool
 ```
 
