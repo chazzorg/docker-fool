@@ -73,7 +73,7 @@ docker-compose up -d  nginx mysql
 ```
 你可以从以下列表选择你自己的容器组合：
 
-`nginx`, `php-fpm`, `php-worker`, `mysql`, `redis`, `apache`
+`nginx`, `php-fpm`, `mysql`, `redis`, `apache`
 
 **例子:** 进入容器
 
@@ -133,15 +133,6 @@ docker-compose stop {服务名称}
 ```bash
 docker-compose down
 ```
-### 自定义独立队列容器【php-worker】
-
-1 - 打开 `.env` 文件, 设置 php-worker 相关参数，确认所需要的扩展
-
-2 - 在 services/php-worker/supervisord.d目录下，创建队列运行配置文件
-
-3 - 启动容器 `docker-compose up -d php-worker`
-
-
 
 ### 编辑 Docker 镜像
 
