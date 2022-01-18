@@ -20,11 +20,11 @@
 ## 项目介绍
 
 docker-fool  `傻瓜式`操作,努力简化使用docker搭建应用环境过程。
-它包含预包装 Docker 镜像，可以快速为你搭建 PHP, NGINX, MySQL 等服务，所有镜像均已官方镜像为基础，可根据需要自由选择或替换某项服务，简单、透明、方便、快速。
+它包含预包装 Docker 镜像，可以快速为你搭建 PHP, NGINX, MySQL, GO, JAVA等服务，所有镜像均已官方镜像为基础，可根据需要自由选择或替换某项服务，简单、透明、方便、快速。
 
 
 
-#### 项目地址 ：[码云](https://gitee.com/chazzorg/docker-fool)      [github](https://github.com/chazzorg/docker-fool)
+#### 项目地址 ：[码云](https://gitee.com/chazzorg/docker-fool)
 
 **使用概览：**
 
@@ -42,9 +42,14 @@ chmod 700 ./fool
 ./fool
 ```
 
-3. 根据脚本引导，选择对应操作
+3. 一键初始化环境
 
-4. 容器关闭之后快速启动，可在根目录下执行`./start` 或 `docker-compose up -d`
+4. 快速创建服务
+ ```bash
+nginx php mysql redis
+```
+
+容器关闭之后快速启动，可在根目录下执行`./start` 或 `docker-compose up -d`
 
 
 ### 特点
