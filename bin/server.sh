@@ -80,6 +80,12 @@ function appendLock(){
 # 相关文件夹创建
 function createDir(){
     getName=${1^^}
+    strA="-"
+    result=$(echo $getName | grep "${strA}")
+    if [[ "$result" != "" ]]
+    then
+        return 0
+    fi
     logName=($(eval echo '${'"$getName"'_LOG}'))
     if test -n "$logName"; then
         if [ ! -d ${RUNTIME_PATH_HOST}${logName} ];then
@@ -87,6 +93,7 @@ function createDir(){
         fi
     fi
     dataName=($(eval echo '${'"$getName"'_DATA}'))
+    echo $dataName
     if test -n "$dataName"; then
         if [ ! -d ${RUNTIME_PATH_HOST}${dataName} ];then
             mkdir -p ${RUNTIME_PATH_HOST}${dataName}

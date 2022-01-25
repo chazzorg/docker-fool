@@ -1,0 +1,14 @@
+### pgAdmin ##############################################
+    pgadmin:
+      image: dpage/pgadmin4:latest
+      environment:
+        - "PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}"
+        - "PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}"
+      ports:
+        - "${PGADMIN_PORT}:80"
+      volumes:
+        - ${RUNTIME_PATH_HOST}${PGADMIN_DATA}:/var/lib/pgadmin
+      depends_on:
+        - postgres
+      networks:
+        - protected
