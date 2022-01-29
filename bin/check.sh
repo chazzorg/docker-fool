@@ -15,7 +15,7 @@ function checkLinux(){
 
 # Cento
 function checkCentos(){
-    sysname=`cat /etc/redhat-release 2>&1 >/dev/null `
+    sysname=`cat /etc/redhat-release`
     if grep -q CentOS <<<$sysname; then
         return 0
     else

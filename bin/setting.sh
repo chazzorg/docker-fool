@@ -36,7 +36,6 @@ function addWindowsWork(){
 function addLinuxWork(){
     if [ ! -d ${CODE_PATH_HOST} ];then
         mkdir ${CODE_PATH_HOST}
-        chown -R www:www-data ${CODE_PATH_HOST}
         echo '***************************'
         echo " "
         echo "代码目录路径："${CODE_PATH_HOST}
