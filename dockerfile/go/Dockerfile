@@ -13,11 +13,11 @@ RUN if [ ${CHANGE_SOURCE} = true ]; then \
 
 RUN apt-get update && apt-get install -y vim
 
-ARG CODE_PATH_CONTAINER
-RUN mkdir -p ${CODE_PATH_CONTAINER}
+
+RUN mkdir -p /go/src && mkdir -p /go/pkg && mkdir -p /go/bin
 
 ## 设置工作目录
-WORKDIR ${CODE_PATH_CONTAINER}
+WORKDIR /go/src
 
 ## 设置docker要开发的哪个端口
 EXPOSE 8080

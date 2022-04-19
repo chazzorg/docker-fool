@@ -5,12 +5,11 @@
         args:
           - GO_VERSION=${GO_VERSION}
           - CHANGE_SOURCE=${CHANGE_SOURCE}
-          - CODE_PATH_CONTAINER=${CODE_PATH_CONTAINER}
       tty: true
       environment:
         - TZ=${TZ}
       volumes:
-        - ${CODE_PATH_HOST}:${CODE_PATH_CONTAINER}
+        - ${CODE_PATH_HOST}:/go/src
       ports:
         - "${GO_PORT}:8080"
       networks:
