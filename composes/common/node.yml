@@ -1,0 +1,14 @@
+### Node ################################################
+    node:
+      build:
+        context: ${DOCKERFILE_PATH_HOST}/node
+        args:
+          - NODE_VERSION=${NODE_VERSION}
+      environment:
+        - TZ=${TZ}
+      volumes:
+        - ${CODE_PATH_HOST}:/var/app
+      ports:
+        - "${NODE_PORT}:8080"
+      networks:
+        - protected
