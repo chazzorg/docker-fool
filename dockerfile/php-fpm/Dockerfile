@@ -48,6 +48,7 @@ RUN set -xe; \
       apt-utils \
       gnupg2 \
       git \
+      subversion \
       #
       #--------------------------------------------------------------------------
       # Mandatory Software's Installation
